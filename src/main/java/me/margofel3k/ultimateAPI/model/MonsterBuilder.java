@@ -39,13 +39,13 @@ public class MonsterBuilder implements Listener {
     }
 
     @EventHandler(ignoreCancelled = true, priority = EventPriority.LOWEST)
-    public void onDamagePlayer(PlayerDamageByEntity event) {
+    protected void onDamagePlayer(PlayerDamageByEntity event) {
         if (!event.getEntity().getPersistentDataContainer().get(new NamespacedKey("ultimateapi", "customMonster"), PersistentDataType.STRING).equalsIgnoreCase(uuid.toString())) return;
         event.getPlayer().damage(damage);
 
     }
 
-    public void spawn(Location location) {
+    protected void spawn(Location location) {
         Monster entity = (Monster) location.getWorld().spawnEntity(location, entityType);
         entity.getPersistentDataContainer().set(new NamespacedKey("ultimateapi", "customMonster"), PersistentDataType.STRING, uuid.toString());
         entity.setInvisible(invisible);

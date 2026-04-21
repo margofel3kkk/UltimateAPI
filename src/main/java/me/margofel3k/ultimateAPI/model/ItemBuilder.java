@@ -27,7 +27,7 @@ public class ItemBuilder implements Listener {
     }
 
     @EventHandler(priority = EventPriority.LOWEST, ignoreCancelled = true)
-    public void onInventoryClick(InventoryClickEvent event) {
+    protected void onInventoryClick(InventoryClickEvent event) {
         if (callback == null) return;
         if (event.getClickedInventory() == null) return;
         if (event.getCurrentItem() == null) return;
@@ -35,18 +35,18 @@ public class ItemBuilder implements Listener {
         callback.accept(event);
     }
 
-    public void onClick(Consumer<InventoryClickEvent> callback) {
+    protected void onClick(Consumer<InventoryClickEvent> callback) {
         this.callback = callback;
     }
 
-    public ItemBuilder setDisplayName(String name) {
+    protected ItemBuilder setDisplayName(String name) {
         ItemMeta meta = item.getItemMeta();
         meta.customName(Component.text(name));
         item.setItemMeta(meta);
         return this;
     }
 
-    public ItemBuilder setLore(List<String> lore) {
+    protected ItemBuilder setLore(List<String> lore) {
         ItemMeta meta = item.getItemMeta();
         List<Component> loreComponents = new ArrayList<>();
         lore.forEach(component -> loreComponents.add(Component.text(component)));
@@ -55,14 +55,14 @@ public class ItemBuilder implements Listener {
         return this;
     }
 
-    public ItemBuilder setCustomModelData(int customModelData) {
+    protected ItemBuilder setCustomModelData(int customModelData) {
         ItemMeta meta = item.getItemMeta();
         meta.setCustomModelData(customModelData);
         item.setItemMeta(meta);
         return this;
     }
 
-    public ItemBuilder setMaxStackSize(int maxStackSize) {
+    protected ItemBuilder setMaxStackSize(int maxStackSize) {
         ItemMeta meta = item.getItemMeta();
         meta.setMaxStackSize(maxStackSize);
         item.setItemMeta(meta);
