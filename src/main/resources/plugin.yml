@@ -1,0 +1,9 @@
+name: UltimateAPI
+version: '${version}'
+
+main: me.margofel3k.ultimateAPI.UltimateAPI
+paperPluginLoader: me.margofel3k.ultimateAPI.UltimateAPILoader
+api-version: '1.21.8'
+load: POSTWORLD
+
+authors: [ Margofel3k ]

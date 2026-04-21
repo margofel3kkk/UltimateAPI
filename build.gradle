@@ -1,0 +1,34 @@
+plugins {
+    id 'java-library'
+    id 'xyz.jpenilla.run-paper' version '3.0.2'
+}
+
+group = "com.github.margofel3kkk"
+version = "1.0.0"
+
+repositories {
+    mavenCentral()
+    maven {
+        url = 'https://repo.papermc.io/repository/maven-public/'
+    }
+}
+
+dependencies {
+    compileOnly 'io.papermc.paper:paper-api:1.21.8-R0.1-SNAPSHOT'
+
+    implementation("org.projectlombok:lombok:1.18.38")
+    annotationProcessor "org.projectlombok:lombok:1.18.38"
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
+tasks {
+    runServer {
+        minecraftVersion('1.21.8')
+        jvmArgs('-Xms2G', '-Xmx6G')
+    }
+}
